@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const exphbs = require('express-handlebars')
 const connectDB = require('./config/db')
 
 // environment variables
@@ -18,6 +19,10 @@ const PORT = process.env.PORT
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
+// handlebars
+app.engine('.hbs', exphbs({ extname: '.hbs' }))
+app.set('view engine', '.hbs')
 
 // main routes
 app.use('/', require('./routes/index'))
