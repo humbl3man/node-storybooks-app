@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === 'development') {
 app.engine('.hbs', exphbs({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
 
+// static files
+app.use(express.static('assets'))
 // main routes
 app.use('/', require('./routes/index'))
 
